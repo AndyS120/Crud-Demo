@@ -3,7 +3,7 @@ package com.csc340.crudapp.task;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "task")
@@ -23,7 +23,7 @@ public class Task {
 
     @Column(nullable = false)
     @NonNull
-    private Calendar taskDate;
+    private LocalDate taskDate;
 
     @Column(nullable = false)
     @NonNull

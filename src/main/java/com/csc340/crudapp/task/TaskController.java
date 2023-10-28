@@ -21,12 +21,6 @@ public class TaskController {
         return "list-all-tasks";
     }
 
-    @GetMapping("/id={taskId}")
-    public String getTask(@PathVariable long taskId, Model model) {
-        model.addAttribute("task", taskService.getTaskById(taskId));
-        return "task-detail";
-    }
-
     @GetMapping("/delete/id={taskId}")
     public String deleteTask(@PathVariable long taskId, Model model) {
         taskService.deleteTaskById(taskId);
@@ -40,7 +34,7 @@ public class TaskController {
     }
 
     @PostMapping("/update/id={taskId}")
-    public String upateTask(@PathVariable long taskId, Task task) {
+    public String updateTask(@PathVariable long taskId, Task task) {
         Task existing = taskService.getTaskById(taskId);
         existing.setStatus(task.getTaskName());
         existing.setDetails(task.getDetails());
@@ -62,12 +56,5 @@ public class TaskController {
         model.addAttribute("task", taskService.getTaskById(taskId));
         model.addAttribute("isUpdate", true);
         return "update-task";
-    }
-    @GetMapping("/update-status/id={taskID}&status={status}")
-    public String updateTaskStatus(@PathVariable long taskID, @PathVariable String status) {
-        Task existing = taskService.getTaskById(taskID);
-        existing.setStatus(status);
-        taskService.saveTask(existing);
-        return "redirect:/goal/all";
     }
 }

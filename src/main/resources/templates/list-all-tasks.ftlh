@@ -10,18 +10,33 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="col"></div>
-    <div class="col">
-        <h1 class="text-center my-3">To Do List</h1>
-        <div>
-            <a class="btn btn-primary" href="/task/create">Create New Task</a>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h1 class="text-center my-3">To Do List</h1>
+            <div class="list-group">
+                <#list tasksList as task>
+                    <div class="list-group-item list-group-item-action">
+                        <div class="row">
+                            <div class="col-9">
+                                <h5 class="mb-1">${task.taskName}</h5>
+                                <p>${task.details}</p>
+                            </div>
+                            <div class="col-3">
+                                <small class="<#if task.status=="done"></#if>">Status: ${task.status}</small><br>
+                                <small>Due Date: ${task.taskDate}</small>
+                            </div>
+                        </div>
+                        <a href="/task/update/id=${task.taskID}" class="btn btn-primary mt-2">Update</a>
+                        <a href="/task/delete/id=${task.taskID}" class="btn mt-2">Remove</a>
+                    </div>
+                </#list>
+            </div>
+            <div>
+                <a class="btn btn-primary text-center my-4" href="/task/create">Create New Task</a>
+            </div>
         </div>
-        <div class="list-group">
-            <#list tasksList as task>
-            <button class="btn btn-primary list-group-item">${task.taskName}</button>
-            </#list>
-        </div>
+        <div class="col-3"></div>
     </div>
-    <div class="col"></div>
 </body>
 </html>

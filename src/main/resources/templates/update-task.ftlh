@@ -11,14 +11,14 @@
 </head>
 <body>
     <div class="row">
-        <div class="col"></div>
-        <form class="col p-3 mt-2" action="<#if isUpdate>/task/update/id=${task.taskID}<#else>/task/create</#if>" name="task" method="post">
+        <div class="col-3"></div>
+        <form class="col-6 p-3 mt-2" action="<#if isUpdate>/task/update/id=${task.taskID}<#else>/task/create</#if>" name="task" method="post">
             <h1 class="form-label my-5"><#if !isUpdate>Create New<#else>Update</#if> Task</h1>
             <div class="input-group mb-2">
                 <span class="input-group-text">Task Name:</span>
-                <input type="text" class="form-control" placeholder="Task Name">
+                <input type="text" class="form-control" placeholder="Task Name" name="taskName" value="Sample task">
                 <span class="input-group-text">Due Date:</span>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="taskDate" value="${.now?date?iso_utc}">
                 <span class="input-group-text">Status:</span>
                 <select class="form-select" id="status" name="status">
                     <option value="pending">Pending</option>
@@ -28,11 +28,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Details</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="details">Sample Description</textarea>
             </div>
         <button type="submit" class="btn btn-primary">Save</button>
         </form>
-        <div class="col"></div>
+        <div class="col-3"></div>
     </div>
 </body>
 </html>
