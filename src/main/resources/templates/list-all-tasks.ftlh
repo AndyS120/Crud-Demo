@@ -23,7 +23,7 @@
                                 <p>${task.details}</p>
                             </div>
                             <div class="col-3">
-                                <small class="<#if task.status=="done"></#if>">Status: ${task.status}</small><br>
+                                <small class="<#if task.status=="done">text-success<#elseif task.status=="pending">text-secondary</#if>">Status: ${task.status}</small><br>
                                 <small>Due Date: ${task.taskDate}</small>
                             </div>
                         </div>
